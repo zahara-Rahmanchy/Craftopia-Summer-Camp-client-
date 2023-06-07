@@ -1,11 +1,13 @@
 import React, {useContext, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {FaEye, FaEyeSlash} from "react-icons/fa";
+import {FaEye, FaEyeSlash, FaGoogle} from "react-icons/fa";
+import {FcGoogle} from "react-icons/fc";
 import {useForm} from "react-hook-form";
-// import Swal from "sweetalert2";
+
 import {AuthContext} from "../Provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -13,7 +15,7 @@ const Login = () => {
     watch,
     formState: {errors},
   } = useForm();
-  const {logIn} = useContext(AuthContext);
+  const {logIn, googleLogIn} = useContext(AuthContext);
 
   const [NoshowPass, setshowPass] = useState(true);
   const navigate = useNavigate();
@@ -26,19 +28,25 @@ const Login = () => {
     logIn(data.email, data.password).then(result => {
       const user = result.user;
       console.log(user);
-      //   Swal.fire({
-      //     title: "User Login Successful.",
-      //     showClass: {
-      //       popup: "animate__animated animate__fadeInDown",
-      //     },
-      //     hideClass: {
-      //       popup: "animate__animated animate__fadeOutUp",
-      //     },
-      //   });
+
       navigate(from, {replace: true});
       //   navigate("/");
     });
   };
+  const handleGoogle = () => {
+    googleLogIn()
+      .then(result => {
+        const loggedInUser = result.user;
+
+        console.log("google", loggedInUser);
+
+        navigate(from, {replace: true});
+      })
+      .catch(error => {
+        setError(error.message);
+      });
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200 p-4">
       <div className="hero-content flex-col lg:flex-row">
@@ -94,6 +102,13 @@ const Login = () => {
               </Link>{" "}
             </small>
           </span>
+          <hr></hr>
+          <button
+            className="btn bg-green-200 my-4 w-3/4 ms-12"
+            onClick={handleGoogle}
+          >
+            <FcGoogle /> Log In with Google
+          </button>
         </div>
       </div>
     </div>

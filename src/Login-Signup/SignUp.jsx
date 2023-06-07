@@ -1,10 +1,15 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../Provider/AuthProvider";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
+import {FaGoogle} from "react-icons/fa";
 
 export const SignUp = () => {
+  const [error, setError] = useState("");
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -25,14 +30,28 @@ export const SignUp = () => {
         console.log(result);
         updateUserProfile(data.name, data.photo);
         logOut()
-          .then(() => Swal.fire("Registered Successfully. Please Login!"))
+          .then(() => {})
           .catch(error => setError(error.message));
         navigate("/login", {replace: true});
         // use toast
 
         reset();
       })
-      .catch(error => console.log(error));
+      .catch(error => setError(error));
+  };
+
+  const handleGoogle = () => {
+    googleLogIn()
+      .then(result => {
+        const loggedInUser = result.user;
+
+        console.log(loggedInUser);
+
+        navigate("/");
+      })
+      .catch(error => {
+        setError(error.message);
+      });
   };
 
   return (
@@ -42,7 +61,7 @@ export const SignUp = () => {
         <title> Craftopia | Sign Up </title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse w-1/2">
+        <div className="hero-content flex-col lg:flex-row-reverse w-1/2 ">
           <div className=" shadow-2xl bg-base-100 w-full">
             <h2 className="text-2xl mt-2 font-bold text-center text-teal-600">
               Sign Up!
@@ -169,6 +188,13 @@ export const SignUp = () => {
                 </button>
               </div>
             </form>
+            <hr></hr>
+            <button
+              className="btn bg-green-200 my-4 w-3/4 ms-12"
+              onClick={handleGoogle}
+            >
+              <FaGoogle /> Sign with Google
+            </button>
           </div>
         </div>
       </div>
