@@ -8,6 +8,9 @@ import Home from "../Pages/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import SelectedClasses from "../Pages/Dashboard/Students/SelectedClasses/SelectedClasses";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -36,21 +39,35 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashBoard",
+    path: "dashboard",
     element: (
-      //   <PrivateRoute>
-      <DashboardLayout />
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
     ),
-    //   </PrivateRoute>
+
     children: [
       {
         // admin
-        path: "dashboard/manageusers",
-        element: <ManageUsers />,
+        path: "manageusers",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
-        path: "ManageClasses",
-        element: <ManageClasses />,
+        path: "manageclasses",
+        element: (
+          <AdminRoute>
+            <ManageClasses />
+          </AdminRoute>
+        ),
+      },
+      // students
+      {
+        path: "selectedclasses",
+        element: <SelectedClasses />,
       },
     ],
   },

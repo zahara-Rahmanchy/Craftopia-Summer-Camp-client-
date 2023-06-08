@@ -1,11 +1,10 @@
 import React, {useState} from "react";
-import useAxios from "../../../../hooks/useAxios";
+
 import {useQuery} from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxios from "../../../../Hooks/useAxios";
 const ManageUsers = () => {
   const [axiosSecure] = useAxios();
-  const [isAdmindisable, setAdminDisable] = useState(false);
-  const [userId, setUserId] = useState();
 
   const {data: users = [], refetch} = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");

@@ -1,9 +1,11 @@
 import React from "react";
-import {Link, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet} from "react-router-dom";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
 import {FaUsers} from "react-icons/fa";
 import {GiOpenBook} from "react-icons/gi";
+import useAdmin from "../Hooks/useAdmin";
 const DashboardLayout = () => {
+  const [isAdmin] = useAdmin();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -24,24 +26,42 @@ const DashboardLayout = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full   bg-gradient-to-b from-teal-500 via-green-300 to-green-300 text-base-content">
           {/* Sidebar content here */}
-          <li>
-            <Link
-              to="dashboard/manageusers"
-              className="text-2xl font-semibold text-white my-5"
-            >
-              <FaUsers className="text-3xl text-orange-200" />
-              Manage Users
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="dashboard/manageclasses"
-              className="text-2xl font-semibold text-white my-5"
-            >
-              <GiOpenBook className="text-3xl text-orange-200" />
-              Manage Classes
-            </Link>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/manageusers"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <FaUsers className="text-3xl text-orange-200" />
+                  Manage Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manageclasses"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <GiOpenBook className="text-3xl text-orange-200" />
+                  Manage Classes
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/selectedclasses"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <GiOpenBook className="text-3xl text-orange-200" />
+                  Selected Classes
+                </NavLink>
+              </li>
+              <li>Enrolled Classes</li>
+              <li>Payment History</li>
+            </>
+          )}
         </ul>
       </div>
     </div>

@@ -2,9 +2,11 @@ import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   // console.log(user);
   const handleLogOut = () => {
     logOut()
@@ -46,7 +48,15 @@ const Navbar = () => {
               <Link to="/classes">Classes</Link>
             </li>
             <li>
-              <Link to="/dashboard">DashBoard</Link>
+              <Link
+                to={
+                  isAdmin
+                    ? "/dashboard/manageusers"
+                    : "/dashboard/selectedclasses"
+                }
+              >
+                Dashboard
+              </Link>
             </li>
           </ul>
         </div>
@@ -70,7 +80,15 @@ const Navbar = () => {
             <Link to="/classes">Classes</Link>
           </li>
           <li>
-            <Link to="/dashboard">DashBoard</Link>
+            <Link
+              to={
+                isAdmin
+                  ? "/dashboard/manageusers"
+                  : "/dashboard/selectedclasses"
+              }
+            >
+              Dashboard
+            </Link>
           </li>
         </ul>
       </div>
