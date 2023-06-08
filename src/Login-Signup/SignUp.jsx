@@ -4,7 +4,9 @@ import {AuthContext} from "../Provider/AuthProvider";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
 import {FaGoogle} from "react-icons/fa";
+import Swal from "sweetalert2";
 
+import axios from "axios";
 export const SignUp = () => {
   const [error, setError] = useState("");
   const location = useLocation();
@@ -28,12 +30,37 @@ export const SignUp = () => {
     createUser(data.email, data.password)
       .then(result => {
         console.log(result);
-        updateUserProfile(data.name, data.photo);
+        updateUserProfile(data.name, data.photo).then(() => {
+          const newUser = {
+            name: data.name,
+            email: data.email,
+            image: data.photo,
+            role: "student",
+          };
+          axios
+            .post("http://localhost:5000/users", newUser)
+            .then(response => {
+              console.log("Inserted data:", response.data);
+              if (response.data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Registered successfully. Please Login!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            })
+            .catch(error => {
+              console.error("Error inserting data:", error);
+            });
+        });
         logOut()
           .then(() => {})
           .catch(error => setError(error.message));
+
         navigate("/login", {replace: true});
-        // use toast
+        // Use toast
 
         reset();
       })
@@ -46,6 +73,32 @@ export const SignUp = () => {
         const loggedInUser = result.user;
 
         console.log(loggedInUser);
+        const newUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          image: loggedInUser.photoURL,
+          type: "student",
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then(res => res.json())
+          .then(data => {
+            // console.log("inserted data", data);
+            if (data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Registered successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
 
         navigate("/");
       })
@@ -63,7 +116,7 @@ export const SignUp = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse w-1/2 ">
           <div className=" shadow-2xl bg-base-100 w-full">
-            <h2 className="text-2xl mt-2 font-bold text-center text-teal-600">
+            <h2 className="text-2xl mt-2 font-bold text-center text-green-500">
               Sign Up!
             </h2>
             <form

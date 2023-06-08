@@ -1,10 +1,11 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -32,7 +33,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52 text-md  bg-green-500 text-white z-50 bg-opacity-80"
           >
             <li>
               <Link to="/">Home</Link>
@@ -51,12 +52,9 @@ const Navbar = () => {
         </div>
         <div className="flex flex-col justify-around space-y-0  items-center">
           {" "}
-          <a className="btn btn-ghost font-bold text-2xl text-teal-400">
+          <a className="btn btn-ghost font-bold md:text-3xl text-green-300 text-2xl">
             Craftopia
           </a>
-          <span className=" italic text-sm text-orange-300 my-0">
-            Summer Camp
-          </span>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
