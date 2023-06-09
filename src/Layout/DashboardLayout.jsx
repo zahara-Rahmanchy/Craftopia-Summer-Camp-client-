@@ -1,11 +1,15 @@
 import React from "react";
 import {Link, NavLink, Outlet} from "react-router-dom";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
-import {FaUsers} from "react-icons/fa";
+import {FaHome, FaUsers} from "react-icons/fa";
 import {GiOpenBook} from "react-icons/gi";
+import {BsPlusCircleFill} from "react-icons/bs";
 import useAdmin from "../Hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
+
 const DashboardLayout = () => {
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -47,6 +51,27 @@ const DashboardLayout = () => {
                 </NavLink>
               </li>
             </>
+          ) : isInstructor ? (
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/addclass"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <BsPlusCircleFill className="text-3xl text-orange-200" />
+                  Add Class
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/myclasses"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <GiOpenBook className="text-3xl text-orange-200" />
+                  My Classes
+                </NavLink>
+              </li>
+            </>
           ) : (
             <>
               <li>
@@ -62,6 +87,13 @@ const DashboardLayout = () => {
               <li>Payment History</li>
             </>
           )}
+          <hr />
+          <li>
+            <NavLink to="/" className="text-2xl font-semibold text-white my-5">
+              <FaHome className="text-3xl text-orange-200" />
+              Home
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>

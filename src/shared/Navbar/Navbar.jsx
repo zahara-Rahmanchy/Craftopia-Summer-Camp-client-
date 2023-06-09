@@ -3,10 +3,12 @@ import {Link} from "react-router-dom";
 import {AuthContext} from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   // console.log(user);
   const handleLogOut = () => {
     logOut()
@@ -79,17 +81,19 @@ const Navbar = () => {
           <li>
             <Link to="/classes">Classes</Link>
           </li>
-          <li>
-            <Link
-              to={
-                isAdmin
-                  ? "/dashboard/manageusers"
-                  : "/dashboard/selectedclasses"
-              }
-            >
-              Dashboard
-            </Link>
-          </li>
+          {isAdmin ? (
+            <li>
+              <Link to="/dashboard/manageusers">Dashboard</Link>
+            </li>
+          ) : isInstructor ? (
+            <li>
+              <Link to="/dashboard/addclass">Dashboard</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/dashboard/selectedclasses">Dashboard</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">

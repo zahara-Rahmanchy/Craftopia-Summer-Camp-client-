@@ -12,18 +12,12 @@ const ManageUsers = () => {
     return res.data;
   });
   const handleAdmin = user => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({role: "admin", clicked: true}),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("modified", data);
-        if (data.modifiedCount) {
-          refetch(user._id);
+    axiosSecure
+      .patch(`/users/${user._id}`, {role: "admin", clicked: true})
+      .then(response => {
+        console.log("modified", response.data);
+        if (response.data.modifiedCount) {
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -33,22 +27,19 @@ const ManageUsers = () => {
           });
         }
       });
+    // .catch(error => {
+    //   console.error("Error modifying user:", error);
+    // });
   };
 
   // instructor
   const handleInstructor = user => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({role: "instructor", clicked: true}),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("modified", data);
-        if (data.modifiedCount) {
-          refetch(user._id);
+    axiosSecure
+      .patch(`/users/${user._id}`, {role: "instructor", clicked: true})
+      .then(response => {
+        console.log("modified", response.data);
+        if (response.data.modifiedCount) {
+          refetch(["users"]);
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -101,7 +92,12 @@ const ManageUsers = () => {
                   <button
                     className="btn btn-ghost bg-orange-300  text-white me-3 hover:bg-orange-400 "
                     onClick={() => handleAdmin(user)}
-                    disabled={user?.clicked === true ? true : false}
+                    // disabled={user?.clicked === true ? true : false}
+                    disabled={
+                      user?.clicked === true && user?.role === "admin"
+                        ? true
+                        : false
+                    }
                   >
                     Admin
                   </button>
@@ -109,7 +105,12 @@ const ManageUsers = () => {
                     className="btn btn-ghost bg-teal-400  text-white md:me-2 mt-2 hover:bg-teal-600"
                     // disabled={isAdmindisable}
                     onClick={() => handleInstructor(user)}
-                    disabled={user?.clicked === true ? true : false}
+                    disabled={
+                      user?.clicked === true && user?.role === "instructor"
+                        ? true
+                        : false
+                    }
+                    // disabled={user?.clicked === true ? true : false}
                   >
                     Instructor
                   </button>

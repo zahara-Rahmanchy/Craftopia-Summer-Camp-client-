@@ -19,6 +19,7 @@ The config object contains the request configuration, including the URL, headers
   useEffect(() => {
     axiosSecure.interceptors.request.use(config => {
       const token = localStorage.getItem("Access-token"); // here we are getting the token from local storage
+
       if (token) {
         config.headers.Authorization = `Bearer ${token}`; //if it exists then, It sets the  Authorization header to include the access token as a Bearer token
       }
