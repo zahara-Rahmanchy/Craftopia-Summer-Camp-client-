@@ -144,7 +144,7 @@ export const SignUp = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   placeholder="email"
                   className="input input-bordered"
                   {...register("email", {required: "Email is required"})}
