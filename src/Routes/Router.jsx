@@ -88,7 +88,11 @@ export const router = createBrowserRouter([
       // students
       {
         path: "selectedclasses",
-        element: <SelectedClasses />,
+        element: (
+          <PrivateRoute>
+            <SelectedClasses />
+          </PrivateRoute>
+        ),
       },
     ],
   },

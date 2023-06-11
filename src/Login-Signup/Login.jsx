@@ -53,7 +53,9 @@ const Login = () => {
           image: loggedInUser.photoURL,
           type: "student",
         };
-        fetch("http://localhost:5000/users", {
+
+        fetch("https://craftopia.vercel.app/users", {
+          // fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -38,7 +38,9 @@ export const SignUp = () => {
             role: "student",
           };
           axios
-            .post("http://localhost:5000/users", newUser)
+            .post("https://craftopia.vercel.app/users", newUser)
+            // .post(" http://localhost:5000/users", newUser)
+
             .then(response => {
               console.log("Inserted data:", response.data);
               if (response.data.insertedId) {
@@ -79,7 +81,8 @@ export const SignUp = () => {
           image: loggedInUser.photoURL,
           type: "student",
         };
-        fetch("http://localhost:5000/users", {
+        // fetch("https://craftopia.vercel.app/users", {
+        fetch(" http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
