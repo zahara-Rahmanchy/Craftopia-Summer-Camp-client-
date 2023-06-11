@@ -14,7 +14,7 @@ const Classes = () => {
 
     return res.data;
   });
-  console.log("classes", classes);
+  // console.log("classes", classes);
   return (
     <div className="bg-green-200 ">
       <Helmet>
@@ -35,7 +35,7 @@ const Classes = () => {
                 <img
                   src={clas.image}
                   alt="Album"
-                  className="ms-2 my-1 rounded-lg"
+                  className="ms-2 my-1 rounded-s-full w-full"
                 />
               </figure>
 
