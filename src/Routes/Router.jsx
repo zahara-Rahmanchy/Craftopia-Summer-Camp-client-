@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
         path: "manageclasses",
         element: (
           <AdminRoute>
-            <ManageClasses />
+            <ManageClasses></ManageClasses>
           </AdminRoute>
         ),
       },

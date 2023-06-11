@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import useAxios from "../../../../hooks/useAxios";
 import {Helmet} from "react-helmet-async";
 import {useQuery} from "@tanstack/react-query";
+import {AuthContext} from "../../../../Provider/AuthProvider";
 
 const MyClasses = () => {
+  const {user} = useContext(AuthContext);
   const [axiosSecure] = useAxios();
 
   const {data: classes = [], refetch} = useQuery(["classes"], async () => {
-    const res = await axiosSecure.get("/class");
+    const res = await axiosSecure.get(`/class/instructor?email=${user.email}`);
 
     return res.data;
   });
