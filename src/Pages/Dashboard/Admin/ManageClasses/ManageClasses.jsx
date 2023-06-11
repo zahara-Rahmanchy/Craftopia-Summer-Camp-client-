@@ -1,10 +1,12 @@
 import {useQuery} from "@tanstack/react-query";
-import React from "react";
+import React, {useState} from "react";
 import useAxios from "../../../../hooks/useAxios";
 import {Helmet} from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
+  const [classId, setClassId] = useState(null);
+  const [feedback, setFeedback] = useState("");
   const [axiosSecure] = useAxios();
 
   const {data: classes = [], refetch} = useQuery(["classes"], async () => {
@@ -48,6 +50,30 @@ const ManageClasses = () => {
       });
   };
 
+  const open = clas => {
+    const modal = document.getElementById("my_modal_5");
+    modal.showModal();
+    setClassId(clas._id);
+  };
+
+  const FeedBack = clas => {
+    console.log(feedback, classId);
+    axiosSecure
+      .patch(`/class/${classId}`, {feedback: feedback})
+      .then(response => {
+        console.log("modified", response.data);
+        if (response.data.modifiedCount) {
+          refetch(["classes"]);
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `Your is Saved and Sent!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   return (
     <>
       <Helmet>
@@ -130,9 +156,65 @@ const ManageClasses = () => {
                     >
                       Deny
                     </button>
-                    <button className="btn btn-ghost bg-orange-300  text-white me-3 hover:bg-orange-400 mt-2">
+                    {/* Open the modal using ID.showModal() method */}
+                    {/* <button
+                      className="btn btn-ghost bg-orange-300 text-white me-3 hover:bg-orange-400 mt-2"
+                      onClick={() => Feedback()}
+                    >
                       Send Feedback
                     </button>
+                    <Feedback
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                    /> */}
+                    {/* modal */}
+                    <button
+                      className="btn btn-ghost bg-orange-300 text-white me-3 hover:bg-orange-400 mt-2"
+                      onClick={() => open(clas)}
+                    >
+                      Send Feedback
+                    </button>
+                    <dialog
+                      id="my_modal_5"
+                      className="modal modal-bottom sm:modal-middle"
+                    >
+                      <form
+                        method="dialog"
+                        className="modal-box bg-teal-950 bg-opacity-80"
+                      >
+                        <h3 className="font-bold text-lg text-orange-300 m-3">
+                          Send your Feedback!
+                        </h3>
+                        <input
+                          type="textarea"
+                          placeholder="FeedBack"
+                          className="p-4 w-full h-full"
+                          name="feedback"
+                          required
+                          onChange={e => setFeedback(e.target.value)}
+                        />
+                        <div className="modal-action">
+                          {/* if there is a button in form, it will close the modal */}
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              const modal =
+                                document.getElementById("my_modal_5");
+                              modal.close();
+                            }}
+                          >
+                            Close
+                          </button>
+                          <button
+                            className="btn bg-orange-300 text-white border-0"
+                            onClick={() => FeedBack(clas._id)}
+                            type="submit"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </form>
+                    </dialog>
                   </td>
                 </tr>
               ))}
@@ -140,6 +222,8 @@ const ManageClasses = () => {
           </table>
         </div>
       </div>
+
+      {/* )} */}
     </>
   );
 };

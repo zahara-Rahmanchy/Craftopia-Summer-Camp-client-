@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../Provider/AuthProvider";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Helmet} from "react-helmet-async";
-import {FaGoogle} from "react-icons/fa";
+import {FaGoogle, FaUpload} from "react-icons/fa";
 import Swal from "sweetalert2";
 
 import axios from "axios";
@@ -25,7 +25,7 @@ export const SignUp = () => {
     useContext(AuthContext);
 
   const navigate = useNavigate();
-
+  const file = watch("image");
   const onSubmit = data => {
     createUser(data.email, data.password)
       .then(result => {
@@ -150,7 +150,7 @@ export const SignUp = () => {
                   {...register("email", {required: "Email is required"})}
                 />
                 {errors.email && (
-                  <span className="text-red-400 text-xs">
+                  <span className="text-red-400 text-xs m-1">
                     {errors.email.message}
                   </span>
                 )}
@@ -182,7 +182,7 @@ export const SignUp = () => {
                   })}
                 />
                 {errors.password && (
-                  <span className="text-red-400 text-xs">
+                  <span className="text-red-400 text-xs m-1">
                     {errors.password.message}
                   </span>
                 )}
@@ -203,7 +203,7 @@ export const SignUp = () => {
                   })}
                 />
                 {errors.ConfirmPassword && (
-                  <span className="text-red-400 text-xs">
+                  <span className="text-red-400 text-xs m-1">
                     {errors.ConfirmPassword.message}
                   </span>
                 )}
@@ -221,11 +221,28 @@ export const SignUp = () => {
                   })}
                 />
                 {errors.photo && (
-                  <span className="text-red-400 text-xs">
+                  <span className="text-red-400 text-xs m-1">
                     {errors.photo.message}
                   </span>
                 )}
               </div>
+              {/* <div className="flex items-start  form-control ">
+                Photo Url
+                {file && file.length > 0 && (
+                  <p className="mt-2 text-blue-900 text-center">
+                    {file[0].name}
+                  </p>
+                )}
+                <label
+                  htmlFor="upload"
+                  className=" bg-green-400  py-2 px-4 rounded-md cursor-pointer flex flex-row items-center w-1/3 justify-center"
+                >
+                  <FaUpload className="me-1" />
+                  Upload
+                </label>
+                <input id="upload" type="file" className="hidden" />
+              </div> */}
+
               <div className="form-control">
                 {" "}
                 <p>
@@ -243,7 +260,7 @@ export const SignUp = () => {
             </form>
             <hr></hr>
             <button
-              className="btn bg-green-200 my-4 w-3/4 ms-12"
+              className="btn bg-green-200 w-3/4 mx-14 my-2"
               onClick={handleGoogle}
             >
               <FaGoogle /> Sign with Google

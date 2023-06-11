@@ -49,17 +49,19 @@ const Navbar = () => {
             <li>
               <Link to="/classes">Classes</Link>
             </li>
-            <li>
-              <Link
-                to={
-                  isAdmin
-                    ? "/dashboard/manageusers"
-                    : "/dashboard/selectedclasses"
-                }
-              >
-                Dashboard
-              </Link>
-            </li>
+            {isAdmin ? (
+              <li>
+                <Link to="/dashboard/manageusers">Dashboard</Link>
+              </li>
+            ) : isInstructor ? (
+              <li>
+                <Link to="/dashboard/addclass">Dashboard</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/dashboard/selectedclasses">Dashboard</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="flex flex-col justify-around space-y-0  items-center">

@@ -26,13 +26,18 @@ const Login = () => {
 
   const onSubmit = data => {
     console.log(data);
-    logIn(data.email, data.password).then(result => {
-      const user = result.user;
-      console.log(user);
-      Swal.fire("Logged In Successfully!");
-      navigate(from, {replace: true});
-      //   navigate("/");
-    });
+    logIn(data.email, data.password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire("Logged In Successfully!");
+        navigate(from, {replace: true});
+        //   navigate("/");
+      })
+      .catch(error => {
+        console.log(error);
+        setError(error.message);
+      });
   };
 
   // google login
@@ -72,6 +77,7 @@ const Login = () => {
         navigate(from, {replace: true});
       })
       .catch(error => {
+        console.log(error);
         setError(error.message);
       });
   };
@@ -122,7 +128,7 @@ const Login = () => {
               <button className="btn bg-green-400">Login</button>
             </div>
           </form>
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-xs text-red-400 mx-2 my-1">{error}</p>}
           <span className="mb-9 mx-3">
             <small>
               {" "}

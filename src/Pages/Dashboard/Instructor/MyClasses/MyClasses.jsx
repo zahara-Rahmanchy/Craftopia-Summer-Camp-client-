@@ -9,7 +9,7 @@ const MyClasses = () => {
   const [axiosSecure] = useAxios();
 
   const {data: classes = [], refetch} = useQuery(["classes"], async () => {
-    const res = await axiosSecure.get(`/class/instructor?email=${user.email}`);
+    const res = await axiosSecure.get(`/class/instructor/${user.email}`);
 
     return res.data;
   });
@@ -65,7 +65,7 @@ const MyClasses = () => {
                   <td className="text-center">{clas.totalEnrolled}</td>
                   <td className="capitalize">{clas.status}</td>
                   {clas.feedback ? (
-                    <td>{user.feedback}</td>
+                    <td className=" capitalize">{clas.feedback}</td>
                   ) : (
                     <td>No Feedback</td>
                   )}
