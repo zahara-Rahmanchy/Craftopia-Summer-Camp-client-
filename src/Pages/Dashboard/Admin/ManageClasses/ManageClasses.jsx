@@ -19,7 +19,6 @@ const ManageClasses = () => {
     axiosSecure
       .patch(`/class/${clas._id}`, {status: "approved", clicked: true})
       .then(response => {
-        console.log("modified", response.data);
         if (response.data.modifiedCount) {
           refetch(["classes"]);
           Swal.fire({
@@ -36,7 +35,6 @@ const ManageClasses = () => {
     axiosSecure
       .patch(`/class/${clas._id}`, {status: "denied", clicked: true})
       .then(response => {
-        console.log("modified", response.data);
         if (response.data.modifiedCount) {
           refetch(["classes"]);
           Swal.fire({
@@ -57,11 +55,9 @@ const ManageClasses = () => {
   };
 
   const FeedBack = clas => {
-    console.log(feedback, classId);
     axiosSecure
       .patch(`/class/${classId}`, {feedback: feedback})
       .then(response => {
-        console.log("modified", response.data);
         if (response.data.modifiedCount) {
           refetch(["classes"]);
           Swal.fire({

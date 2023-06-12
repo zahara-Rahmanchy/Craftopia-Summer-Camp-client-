@@ -41,14 +41,12 @@ const Classes = () => {
       isSelected: true,
       email: user.email,
     };
-    console.log(selectedClass);
+
     axiosSecure.post("/selectedClass", selectedClass).then(data => {
-      console.log("after posting new item", data.data);
       Swal.fire({
         title: "Your class has been added! Go to Dashboard to see.",
       });
     });
-    console.log(clas);
   };
 
   return (

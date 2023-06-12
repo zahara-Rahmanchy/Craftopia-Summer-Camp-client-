@@ -16,7 +16,6 @@ const ManageUsers = () => {
     axiosSecure
       .patch(`/users/${user._id}`, {role: "admin", clicked: true})
       .then(response => {
-        console.log("modified", response.data);
         if (response.data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -38,7 +37,6 @@ const ManageUsers = () => {
     axiosSecure
       .patch(`/users/${user._id}`, {role: "instructor", clicked: true})
       .then(response => {
-        console.log("modified", response.data);
         if (response.data.modifiedCount) {
           refetch(["users"]);
           Swal.fire({

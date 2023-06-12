@@ -29,7 +29,6 @@ export const SignUp = () => {
   const onSubmit = data => {
     createUser(data.email, data.password)
       .then(result => {
-        console.log(result);
         updateUserProfile(data.name, data.photo).then(() => {
           const newUser = {
             name: data.name,
@@ -42,7 +41,6 @@ export const SignUp = () => {
             // .post(" http://localhost:5000/users", newUser)
 
             .then(response => {
-              console.log("Inserted data:", response.data);
               if (response.data.insertedId) {
                 Swal.fire({
                   position: "top-end",
@@ -54,7 +52,7 @@ export const SignUp = () => {
               }
             })
             .catch(error => {
-              console.error("Error inserting data:", error);
+              setError(error.message);
             });
         });
         logOut()
@@ -74,12 +72,11 @@ export const SignUp = () => {
       .then(result => {
         const loggedInUser = result.user;
 
-        console.log(loggedInUser);
         const newUser = {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           image: loggedInUser.photoURL,
-          type: "student",
+          role: "student",
         };
         fetch("https://craftopia.vercel.app/users", {
           // fetch(" http://localhost:5000/users", {

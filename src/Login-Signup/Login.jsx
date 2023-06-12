@@ -23,20 +23,18 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-  console.log("login from", location);
+
   const onSubmit = data => {
-    console.log(data);
     logIn(data.email, data.password)
       .then(result => {
         const user = result.user;
-        console.log(user);
+
         navigate(from, {replace: true});
         Swal.fire("Logged In Successfully!");
 
         //   navigate("/");
       })
       .catch(error => {
-        console.log(error);
         setError(error.message);
       });
   };
@@ -47,12 +45,11 @@ const Login = () => {
       .then(result => {
         const loggedInUser = result.user;
 
-        console.log(loggedInUser);
         const newUser = {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           image: loggedInUser.photoURL,
-          type: "student",
+          role: "student",
         };
 
         fetch("https://craftopia.vercel.app/users", {
@@ -65,7 +62,6 @@ const Login = () => {
         })
           .then(res => res.json())
           .then(data => {
-            // console.log("inserted data", data);
             if (data.insertedId) {
               Swal.fire({
                 position: "top-end",
@@ -80,7 +76,6 @@ const Login = () => {
         navigate(from, {replace: true});
       })
       .catch(error => {
-        console.log(error);
         setError(error.message);
       });
   };

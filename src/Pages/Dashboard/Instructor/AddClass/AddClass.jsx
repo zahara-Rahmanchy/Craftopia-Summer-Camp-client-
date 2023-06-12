@@ -8,7 +8,7 @@ import {Helmet} from "react-helmet-async";
 
 const imageHostingToken = import.meta.env.VITE_IMAGE_KEY;
 const imageHostingURL = `https://api.imgbb.com/1/upload?key=${imageHostingToken}`;
-console.log("imageHostingToken", imageHostingToken);
+
 const AddClass = () => {
   const {user} = useContext(AuthContext);
   const [axiosSecure] = useAxios();
@@ -21,7 +21,6 @@ const AddClass = () => {
   } = useForm();
 
   const onSubmit = data => {
-    console.log("class", data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -31,7 +30,6 @@ const AddClass = () => {
     })
       .then(res => res.json())
       .then(imgRes => {
-        console.log(imgRes);
         if (imgRes.success) {
           const imgURL = imgRes.data.display_url;
           const {name, email, className, price, availableSeat} = data;
@@ -45,9 +43,8 @@ const AddClass = () => {
             totalEnrolled: parseInt(0),
             status: "pending",
           };
-          console.log(newClass);
+
           axiosSecure.post("/class", newClass).then(data => {
-            console.log("after posting new item", data.data);
             Swal.fire({
               title: "Your class has been added!",
             });

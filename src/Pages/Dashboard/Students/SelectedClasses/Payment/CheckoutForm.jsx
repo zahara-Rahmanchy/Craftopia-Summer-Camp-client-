@@ -42,7 +42,7 @@ const CheckoutForm = ({price, clas}) => {
     if (card == null) {
       return;
     }
-    console.log("card", card);
+
     // Use your card Element with other Stripe.js APIs
     const {error} = await stripe.createPaymentMethod({
       type: "card",
@@ -68,7 +68,6 @@ const CheckoutForm = ({price, clas}) => {
         },
       });
     if (confirmError) {
-      console.log(confirmError);
     }
     // console.log(paymentIntent);
 
@@ -89,9 +88,7 @@ const CheckoutForm = ({price, clas}) => {
         date: new Date(),
       };
 
-      console.log("payment", payment);
       axiosSecure.post("/payments", payment).then(res => {
-        console.log(res.data.result.insertedId);
         if (res.data.result.insertedId) {
           Swal.fire("Transaction Successful! Welcome to Craptopia!");
         }
