@@ -35,6 +35,8 @@ const Classes = () => {
       image: clas.image,
       instructorName: clas.instructorName,
       instructorEmail: clas.email,
+      totalEnrolled: clas.totalEnrolled,
+      availableSeat: clas.availableSeat,
       price: clas.price,
       isSelected: true,
       email: user.email,

@@ -3,7 +3,11 @@ import {Link, NavLink, Outlet} from "react-router-dom";
 import {AiOutlineMenuUnfold} from "react-icons/ai";
 import {FaHome, FaUsers} from "react-icons/fa";
 import {GiOpenBook} from "react-icons/gi";
-import {BsPlusCircleFill} from "react-icons/bs";
+import {
+  BsPlusCircleFill,
+  BsCurrencyExchange,
+  BsBookmarkCheckFill,
+} from "react-icons/bs";
 import useAdmin from "../Hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
@@ -79,12 +83,30 @@ const DashboardLayout = () => {
                   to="/dashboard/selectedclasses"
                   className="text-2xl font-semibold text-white my-5"
                 >
-                  <GiOpenBook className="text-3xl text-orange-200" />
+                  <GiOpenBook className="text-2xl text-orange-200" />
                   Selected Classes
                 </NavLink>
               </li>
-              <li>Enrolled Classes</li>
-              <li>Payment History</li>
+              <li>
+                {" "}
+                <NavLink
+                  to="/dashboard/enrolledclass"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <BsBookmarkCheckFill className="text-2xl text-orange-200" />
+                  Enrolled Classes
+                </NavLink>
+              </li>
+              <li>
+                {" "}
+                <NavLink
+                  to="/dashboard/paymenthistory"
+                  className="text-2xl font-semibold text-white my-5"
+                >
+                  <BsCurrencyExchange className="text-2xl text-orange-200" />
+                  Payment History
+                </NavLink>{" "}
+              </li>
             </>
           )}
           <hr />

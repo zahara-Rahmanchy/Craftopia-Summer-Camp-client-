@@ -7,7 +7,8 @@ import {Helmet} from "react-helmet-async";
 
 const Payment = () => {
   const location = useLocation();
-  const {price, clas} = location.state;
+  const price = location.state?.price;
+  const clas = location.state?.clas;
   console.log(clas, price);
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 

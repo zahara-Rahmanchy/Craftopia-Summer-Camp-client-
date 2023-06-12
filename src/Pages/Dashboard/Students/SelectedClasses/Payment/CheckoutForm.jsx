@@ -79,9 +79,11 @@ const CheckoutForm = ({price, clas}) => {
 
       const payment = {
         email: user?.email,
+        image: clas.image,
         name: user.displayName,
         classId: clas.classId,
         className: clas.className,
+        instructor: clas.instructorName,
         transactionId: paymentIntent.id,
         price: price,
         date: new Date(),

@@ -56,7 +56,12 @@ const SelectedClasses = () => {
                 <th>Instructor</th>
 
                 <th>Price</th>
-
+                <th className="text-center">
+                  Available <br /> Seats
+                </th>
+                <th className="text-center">
+                  Total <br /> Enrolled{" "}
+                </th>
                 <th className="text-center">Action</th>
               </tr>
             </thead>
@@ -81,8 +86,10 @@ const SelectedClasses = () => {
                   <td>{clas.instructorName}</td>
 
                   <td className="text-blue-700 font-semibold">
-                    $ {clas.price} {clas.classId}
+                    $ {clas.price}
                   </td>
+                  <td className="text-center">{clas.availableSeat}</td>
+                  <td className="text-center">{clas.totalEnrolled}</td>
 
                   <td className="flex flex-row text-center justify-center">
                     <Link
