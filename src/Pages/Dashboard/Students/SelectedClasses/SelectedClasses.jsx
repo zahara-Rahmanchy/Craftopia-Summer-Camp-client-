@@ -3,20 +3,46 @@ import React from "react";
 import {Helmet} from "react-helmet-async";
 import {FaTrash} from "react-icons/fa";
 import useAxios from "../../../../hooks/useAxios";
+import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 
 const SelectedClasses = () => {
   const [axiosSecure] = useAxios();
+  let data = {};
   const {data: classes = [], refetch} = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/selectedClass");
 
     return res.data;
   });
+
+  const handleDelete = clas => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "rgb(15 118 110)",
+      cancelButtonColor: "rgb(248 113 113)",
+      confirmButtonText: "Yes, delete it!",
+    }).then(result => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/selectedClass/${clas._id}`).then(response => {
+          const {data} = response;
+          if (data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "Your class has been deleted.", "success");
+          }
+        });
+      }
+    });
+  };
+
   return (
     <>
       <Helmet>
         <title>Craftopia | Dashboard | Selected Classes</title>
       </Helmet>
-      <div className="bg-green-200 h-full">
+      <div className="bg-green-200 h-full ">
         <h2 className="text-center text-3xl py-9 text-teal-900 font-semibold">
           My Selected Classes
         </h2>
@@ -54,16 +80,27 @@ const SelectedClasses = () => {
                   <td>{clas.className}</td>
                   <td>{clas.instructorName}</td>
 
-                  <td>{clas.price}</td>
+                  <td className="text-blue-700 font-semibold">
+                    $ {clas.price} {clas.classId}
+                  </td>
 
                   <td className="flex flex-row text-center justify-center">
-                    <button className="btn btn-ghost bg-teal-400   text-white me-3 hover:bg-teal-600 mt-2 ">
+                    <Link
+                      to="/dashboard/payment"
+                      state={
+                        (data = {
+                          price: clas.price,
+                          clas: clas,
+                        })
+                      }
+                      className="btn btn-ghost bg-teal-400   text-white me-3 hover:bg-teal-600 mt-2 "
+                    >
                       Pay
-                    </button>
+                    </Link>
                     <button
                       className="btn btn-ghost   text-white me-3 mt-2"
-                      onClick={() => handleDeny(clas)}
-                      disabled={clas?.clicked === true}
+                      onClick={() => handleDelete(clas)}
+                      // disabled={clas?.clicked === true}
                     >
                       <FaTrash className="text-orange-300 bg-transparent  hover:text-red-500 text-3xl" />
                     </button>

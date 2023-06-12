@@ -15,7 +15,7 @@ const DashboardLayout = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content grid gap-10 md:grid-cols-4  justify-center">
         {/* Page content here */}
-        <div className="col-span-4 order-2 w-full ">
+        <div className="col-span-4 order-2 w-full bg-green-200">
           <Outlet />
         </div>
         <label
