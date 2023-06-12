@@ -23,15 +23,16 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-
+  console.log("login from", location);
   const onSubmit = data => {
     console.log(data);
     logIn(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user);
-        Swal.fire("Logged In Successfully!");
         navigate(from, {replace: true});
+        Swal.fire("Logged In Successfully!");
+
         //   navigate("/");
       })
       .catch(error => {

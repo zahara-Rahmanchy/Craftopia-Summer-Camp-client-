@@ -1,20 +1,54 @@
-import React from "react";
+import React, {useContext} from "react";
 import useAxios from "../../hooks/useAxios";
 import {useQuery} from "@tanstack/react-query";
 import {Helmet} from "react-helmet-async";
 import useInstructor from "../../hooks/useInstructor";
 import useAdmin from "../../hooks/useAdmin";
+import {AuthContext} from "../../Provider/AuthProvider";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Classes = () => {
+  const {user} = useContext(AuthContext);
   const [axiosSecure] = useAxios();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {data: classes = [], refetch} = useQuery(["classes"], async () => {
     const res = await axiosSecure.get(`/classes`);
 
     return res.data;
   });
   // console.log("classes", classes);
+
+  // handle seleected class
+  const handleSelectedClass = clas => {
+    if (!user?.email) {
+      Swal.fire("Please login to select Class");
+      navigate("/login");
+    }
+    const selectedClass = {
+      classId: clas._id,
+      className: clas.className,
+      image: clas.image,
+      instructorName: clas.instructorName,
+      instructorEmail: clas.email,
+      price: clas.price,
+      isSelected: true,
+      email: user.email,
+    };
+    console.log(selectedClass);
+    axiosSecure.post("/selectedClass", selectedClass).then(data => {
+      console.log("after posting new item", data.data);
+      Swal.fire({
+        title: "Your class has been added! Go to Dashboard to see.",
+      });
+    });
+    console.log(clas);
+  };
+
   return (
     <div className="bg-green-200 ">
       <Helmet>
@@ -63,6 +97,7 @@ const Classes = () => {
                     disabled={
                       isAdmin || isInstructor || clas.availableSeat === 0
                     }
+                    onClick={() => handleSelectedClass(clas)}
                   >
                     Select
                   </button>
