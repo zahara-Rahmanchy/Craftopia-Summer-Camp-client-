@@ -51,8 +51,8 @@ const AuthProvider = ({children}) => {
       // if user is present,then store the token to the local storage
       if (currentUser) {
         axios
-          // .post("https://craftopia.vercel.app/jwt", {
-          .post("http://localhost:5000/jwt", {
+          .post("https://craftopia.vercel.app/jwt", {
+            // .post("http://localhost:5000/jwt", {
             email: currentUser.email,
           })
           .then(data => {

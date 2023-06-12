@@ -57,6 +57,10 @@ const Classes = () => {
         <title>Craftopia | Classes</title>
       </Helmet>
       <div className="mx-6 py-3">
+        <h2 className="text-4xl font-semibold my-10 text-center text-teal-700 italic">
+          {" "}
+          Check our Amazing and Fun Classes!
+        </h2>
         <div
           className={`grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 m-3 `}
         >

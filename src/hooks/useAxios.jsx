@@ -4,8 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../Provider/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000", // here creating the base url
-  // baseURL: "https://craftopia.vercel.app",
+  // baseURL: "http://localhost:5000", // here creating the base url
+  baseURL: "https://craftopia.vercel.app",
 });
 
 const useAxios = () => {
