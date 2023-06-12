@@ -70,20 +70,22 @@ const Navbar = () => {
             <li>
               <Link to="/classes">Classes</Link>
             </li>
-            <li>
-              {" "}
-              <Link
-                to={
-                  isAdmin
-                    ? "/dashboard/manageusers"
-                    : isInstructor
-                    ? "/dashboard/addclass"
-                    : "/dashboard/selectedclasses"
-                }
-              >
-                Dashboard
-              </Link>
-            </li>
+            {user && (
+              <li>
+                {" "}
+                <Link
+                  to={
+                    isAdmin
+                      ? "/dashboard/manageusers"
+                      : isInstructor
+                      ? "/dashboard/addclass"
+                      : "/dashboard/selectedclasses"
+                  }
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="flex flex-col justify-around space-y-0  items-center">
@@ -105,20 +107,22 @@ const Navbar = () => {
           <li>
             <Link to="/classes">Classes</Link>
           </li>
-          <li>
-            {" "}
-            <Link
-              to={
-                isAdmin
-                  ? "/dashboard/manageusers"
-                  : isInstructor
-                  ? "/dashboard/addclass"
-                  : "/dashboard/selectedclasses"
-              }
-            >
-              Dashboard
-            </Link>
-          </li>
+          {user && (
+            <li>
+              {" "}
+              <Link
+                to={
+                  isAdmin
+                    ? "/dashboard/manageusers"
+                    : isInstructor
+                    ? "/dashboard/addclass"
+                    : "/dashboard/selectedclasses"
+                }
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
