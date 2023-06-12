@@ -5,6 +5,7 @@ import useAxios from "../../../../../hooks/useAxios";
 import {useContext} from "react";
 import {AuthContext} from "../../../../../Provider/AuthProvider";
 import {useEffect} from "react";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({price, clas}) => {
   const stripe = useStripe();
@@ -19,7 +20,7 @@ const CheckoutForm = ({price, clas}) => {
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", {price}).then(res => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -50,7 +51,7 @@ const CheckoutForm = ({price, clas}) => {
 
     if (error) {
       setCardError(error.message);
-      console.log("[error]", error);
+      //   console.log("[error]", error);
     } else {
       setCardError("");
       //   console.log("[PaymentMethod]", paymentMethod);
@@ -69,12 +70,30 @@ const CheckoutForm = ({price, clas}) => {
     if (confirmError) {
       console.log(confirmError);
     }
-    console.log(paymentIntent);
+    // console.log(paymentIntent);
 
     setProcessing(false);
     // if successful then payment complete
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
+
+      const payment = {
+        email: user?.email,
+        name: user.displayName,
+        classId: clas.classId,
+        className: clas.className,
+        transactionId: paymentIntent.id,
+        price: price,
+        date: new Date(),
+      };
+
+      console.log("payment", payment);
+      axiosSecure.post("/payments", payment).then(res => {
+        console.log(res.data.result.insertedId);
+        if (res.data.result.insertedId) {
+          Swal.fire("Transaction Successful! Welcome to Craptopia!");
+        }
+      });
     }
   };
 

@@ -86,6 +86,7 @@ const SelectedClasses = () => {
 
                   <td className="flex flex-row text-center justify-center">
                     <Link
+                      // to={`/dashboard/payment/${clas.classId}`}
                       to="/dashboard/payment"
                       state={
                         (data = {
