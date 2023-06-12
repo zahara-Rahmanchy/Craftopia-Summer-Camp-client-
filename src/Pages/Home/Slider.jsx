@@ -1,3 +1,4 @@
+import {Fade, Slide} from "react-awesome-reveal";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
@@ -20,21 +21,27 @@ const slider = (
     >
       <div className=" bg-black bg-opacity-30 hero-overlay"></div>
       <div className="hero-content text-center text-neutral-content ">
-        <div className=" md:max-w-3xl w-full bg-blue-700  bg-opacity-40 hero-overlay">
-          <h1 className="mb-5 md:text-8xl text-5xl font-extrabold italic text-lime-300 border-0 ">
-            Summer Camp!
-          </h1>
-          <p className="text-orange-400 md:text-3xl font-semibold text-lg ">
-            Express Yourself Through Art & Crafts
-          </p>
+        <Slide>
+          {" "}
+          <div className=" md:max-w-3xl w-full bg-blue-700  bg-opacity-40 hero-overlay">
+            <h1 className="mb-5 md:text-8xl text-5xl font-extrabold italic text-lime-300 border-0 ">
+              Summer Camp!
+            </h1>
+            <p className="text-orange-400 md:text-3xl font-semibold text-lg ">
+              Express Yourself Through Art & Crafts
+            </p>
 
-          <p className="md:mb-5 md:mt-3 text-white md:text-xl text-sm font-semibold ">
-            Ignite imagination through colorful possibilities, hands-on
-            activities, and artistic adventures. Nurture young artists and craft
-            enthusiasts in an inspiring environment. Join us for an exciting
-            journey of creativity and growth.
-          </p>
-        </div>
+            <Fade>
+              {" "}
+              <p className="md:mb-5 md:mt-3 text-white md:text-xl text-sm font-semibold ">
+                Ignite imagination through colorful possibilities, hands-on
+                activities, and artistic adventures. Nurture young artists and
+                craft enthusiasts in an inspiring environment. Join us for an
+                exciting journey of creativity and growth.
+              </p>
+            </Fade>
+          </div>
+        </Slide>
       </div>
     </div>
     <div
@@ -49,9 +56,11 @@ const slider = (
       <div className="bg-blue-900 bg-opacity-30 hero-overlay"></div>
       <div className="hero-content text-center text-neutral-content ">
         <div className="max-w-md">
-          <h1 className="mb-5 md:text-6xl font-bold  text-lime-300 text-2xl">
-            Let Your Creativity Shine
-          </h1>
+          <Slide>
+            <h1 className="mb-5 md:text-6xl font-bold  text-lime-300 text-2xl">
+              Let Your Creativity Shine
+            </h1>
+          </Slide>
         </div>
       </div>
     </div>
@@ -67,9 +76,12 @@ const slider = (
       <div className="bg-blue-900 bg-opacity-30 hero-overlay"></div>
       <div className="hero-content text-center text-neutral-content ">
         <div className="max-w-xl">
-          <h1 className="mb-5 md:text-6xl font-bold text-lime-400  text-2xl">
-            Make Art, Make Friends, Make Memories
-          </h1>
+          <Slide>
+            {" "}
+            <h1 className="mb-5 md:text-6xl font-bold text-lime-400  text-2xl">
+              Make Art, Make Friends, Make Memories
+            </h1>
+          </Slide>
         </div>
       </div>
     </div>

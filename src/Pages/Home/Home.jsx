@@ -3,6 +3,7 @@ import Slider from "./Slider";
 import PopularClass from "../../Components/PopularClass";
 import PopularInstructor from "../../Components/PopularInstructor";
 import {Fade} from "react-awesome-reveal";
+import FacilitiesSchedule from "./FacilitiesSchedule";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <Slider />
         <PopularClass />
         <PopularInstructor />
+        <FacilitiesSchedule></FacilitiesSchedule>
       </div>
     </Fade>
   );
