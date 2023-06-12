@@ -2,6 +2,7 @@ import React from "react";
 import useAxios from "../hooks/useAxios";
 import {useQuery} from "@tanstack/react-query";
 import {Bounce, Fade, Rotate} from "react-awesome-reveal";
+import {useState} from "react";
 
 const PopularClass = () => {
   const [axiosSecure] = useAxios();
@@ -11,10 +12,14 @@ const PopularClass = () => {
 
     return res.data;
   });
+
   return (
-    <div className="bg-green-200 p-8 ">
-      <h2 className="text-center text-5xl py-9 text-teal-900 font-semibold italic pt-8">
-        <Bounce>Our Porpular Classes </Bounce>
+    <div className="p-10 ">
+      <h2
+        className="text-center text-5xl py-9  font-semibold italic pt-8
+   text-teal-600 "
+      >
+        <Bounce>Our Popular Classes </Bounce>
       </h2>
       <div className=" py-3 max-w-6xl mx-auto">
         <div

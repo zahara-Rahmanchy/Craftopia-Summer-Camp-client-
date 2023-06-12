@@ -16,13 +16,13 @@ const PopularInstructor = () => {
   );
   const limitedInstructors = instructors.slice(0, 6);
   return (
-    <div className="bg-green-200 p-5 ">
-      <h2 className="text-center text-5xl py-9 text-teal-900 font-semibold italic pt-5">
-        <Rotate> Our Porpular Classes</Rotate>
+    <div className="p-5 ">
+      <h2 className="text-center text-5xl py-9 text-teal-600 font-semibold italic pt-5">
+        <Rotate> Our Instructors</Rotate>
       </h2>
       <div className=" py-3 max-w-6xl mx-auto">
         <div
-          className={` bg-orange-100 grid md:grid-cols-3 grid-cols-1 gap-3 p-4 rounded-lg `}
+          className={` bg-green-200 grid md:grid-cols-3 grid-cols-1 gap-3 p-4 rounded-lg `}
         >
           {limitedInstructors.map((ins, index) => (
             <Roll cascade damping={0.1}>

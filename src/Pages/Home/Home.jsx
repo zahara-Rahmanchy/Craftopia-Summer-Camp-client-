@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Slider from "./Slider";
 import PopularClass from "../../Components/PopularClass";
 import PopularInstructor from "../../Components/PopularInstructor";
@@ -8,7 +8,6 @@ import FacilitiesSchedule from "./FacilitiesSchedule";
 const Home = () => {
   return (
     <Fade>
-      {" "}
       <div>
         <Slider />
         <PopularClass />

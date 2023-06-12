@@ -123,7 +123,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <label className="swap swap-rotate me-2">
-          <input type="checkbox" onChange={handleTheme} />
+          <input
+            type="checkbox"
+            onChange={handleTheme}
+            checked={theme === "light" ? false : true}
+          />
 
           <svg
             className="swap-on fill-current w-10 h-10"

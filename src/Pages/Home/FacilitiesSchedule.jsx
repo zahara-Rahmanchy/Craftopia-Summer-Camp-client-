@@ -4,13 +4,20 @@ import {FaCircle} from "react-icons/fa";
 
 const FacilitiesSchedule = () => {
   return (
-    <div className="bg-green-200 p-10 ">
-      <div className="max-w-7xl mx-auto bg-green-100 py-10">
-        <div className="grid grid-cols-2 gap-2">
+    <div className="p-10 ">
+      <div
+        className={`max-w-7xl mx-auto py-10 
+          bg-green-100""
+        }`}
+      >
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
           <div className="m-3">
             <Slide>
               {" "}
-              <p className="text-xl font-semibold text-teal-700 italic">
+              <p
+                className={`text-xl font-semibold italic   text-teal-600 "
+                  `}
+              >
                 Craftopia Summer Camp offers a wide range of facilities and an
                 exciting schedule to create an unforgettable experience for
                 campers.
@@ -24,9 +31,13 @@ const FacilitiesSchedule = () => {
               ></img>
             </Rotate>
           </div>
-          <div>
+          <div className="p-2">
             <Slide>
-              <p className="text-md font-semibold text-teal-700 italic">
+              <p
+                className={`text-md font-semibold  italic text-teal-600 "
+                    
+                }`}
+              >
                 Here's a glimpse of our dynamic and educational daily schedule
                 filled with engaging activities.
               </p>
@@ -34,22 +45,22 @@ const FacilitiesSchedule = () => {
             <p className="text-lg font-semibold text-orange-400 italic mt-3">
               Morning:
             </p>
-            <ol className="text-md font-semibold text-teal-700 italic my-3 ms-4">
+            <ol className="text-md font-semibold italic my-3 ms-4 text-teal-600">
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Breakfast
                 </li>
               </Zoom>
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Team-building exercises and icebreaker games
                 </li>
               </Zoom>
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Outdoor sports and recreational activities (e.g., soccer,
                   basketball, capture the flag)
                 </li>
@@ -59,7 +70,10 @@ const FacilitiesSchedule = () => {
               {" "}
               Afternoon:
             </p>
-            <ol className="text-md font-semibold text-teal-700 italic ms-4">
+            <ol
+              className="text-md font-semibold  italic my-3 ms-4
+               text-teal-600 "
+            >
               <Zoom>
                 <li className="flex flex-row items-center">
                   <FaCircle className=" me-2 text-xs" />
@@ -69,13 +83,13 @@ const FacilitiesSchedule = () => {
               </Zoom>
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Adventure activities (e.g., hiking, canoeing, archery)
                 </li>
               </Zoom>
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Swimming and water games
                 </li>
               </Zoom>
@@ -84,24 +98,28 @@ const FacilitiesSchedule = () => {
               {" "}
               Evening:{" "}
             </p>
-            <ol className="text-xl font-semibold text-teal-700 italic ms-4">
+            <ol
+              className="text-md font-semibold  italic my-3 ms-4
+               
+                   text-teal-600 "
+            >
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Evening snack
                 </li>
               </Zoom>
 
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Campfire and storytelling
                 </li>
               </Zoom>
 
               <Zoom>
                 <li className="flex flex-row items-center">
-                  <FaCircle className=" me-2 text-sm" />
+                  <FaCircle className=" me-2 text-xs" />
                   Group games and challenges
                 </li>
               </Zoom>
