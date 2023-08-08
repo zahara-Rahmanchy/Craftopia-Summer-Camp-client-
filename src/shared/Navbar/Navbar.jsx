@@ -6,25 +6,26 @@ import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import {useState} from "react";
 import {useEffect} from "react";
+import {ThemeContext} from "../../Provider/ThemeProvider";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  // );
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    // localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
     // add custom data-theme attribute to html tag required to update theme using DaisyUI
     document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  }, []);
+
+  const {theme, toggleTheme} = useContext(ThemeContext);
 
   const handleTheme = e => {
-    if (e.target.checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    toggleTheme();
   };
+  const textColorClass =
+    theme === "light" ? " text-white" : "text-teal-400  bg-teal-950";
 
   // -------------------------------------------------------------------------------------------
   const {user, logOut} = useContext(AuthContext);
@@ -36,8 +37,31 @@ const Navbar = () => {
       .then(() => {})
       .catch(error => console.log(error));
   };
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="navbar  mt-0">
+    <div
+      className={`navbar  mt-0  fixed top-0 z-20  ${
+        scrolled
+          ? "bg-gradient-to-r from-[#1d2939] to-[#64d9b9] text-teal-100"
+          : `${textColorClass} bg-transparent`
+      } `}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -58,9 +82,9 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52 text-md  bg-green-500 text-white z-50 bg-opacity-80"
+            className="text-lg menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52 text-md  bg-teal-600 text-white z-50 bg-opacity-80"
           >
-            <li>
+            <li className="text-lg">
               <Link to="/">Home</Link>
             </li>
 
@@ -88,15 +112,29 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <div className="flex flex-col justify-around space-y-0  items-center">
+
+        <div className="lg:ml-3 w-[40px] ml-9 font-bold  justify-center space-y-0 items-start text-green-300 flex -flex-row ">
+          {/* <label tabIndex={0} className="avatar">
+            <img src="/paint-palette_2072974.png" className="w-10" />
+          </label> */}
+          <p
+            className={`text-3xl italic font-bold md:ml-20  ${
+              scrolled ? " text-teal-200" : `text-teal-200`
+            }`}
+          >
+            Craftopia
+          </p>
+        </div>
+
+        {/* <div className="flex flex-col justify-around space-y-0  items-center">
           {" "}
           <a className="btn btn-ghost font-bold md:text-3xl text-green-300 text-2xl">
             Craftopia
           </a>
-        </div>
+        </div> */}
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-xl font-semibold">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -107,22 +145,21 @@ const Navbar = () => {
           <li>
             <Link to="/classes">Classes</Link>
           </li>
-          {user && (
-            <li>
-              {" "}
-              <Link
-                to={
-                  isAdmin
-                    ? "/dashboard/manageusers"
-                    : isInstructor
-                    ? "/dashboard/addclass"
-                    : "/dashboard/selectedclasses"
-                }
-              >
-                Dashboard
-              </Link>
-            </li>
-          )}
+
+          <li>
+            {" "}
+            <Link
+              to={
+                isAdmin
+                  ? "/dashboard/manageusers"
+                  : isInstructor
+                  ? "/dashboard/addclass"
+                  : "/dashboard/selectedclasses"
+              }
+            >
+              Dashboard
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
@@ -156,15 +193,15 @@ const Navbar = () => {
                 <img src={user.photoURL} />
               </div>
             </div>
-            <button
-              className="ms-2 btn btn-xs bg-green-300"
-              onClick={handleLogOut}
-            >
+            <button className="ms-2 me-0 btn btn-xs " onClick={handleLogOut}>
               Logout
             </button>
           </>
         ) : (
-          <Link to="/login" className="btn">
+          <Link
+            to="/login"
+            className="btn bg-[#24344a] text-white text-lg border-0"
+          >
             Login
           </Link>
         )}

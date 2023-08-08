@@ -14,7 +14,10 @@ const PrivateRoute = ({children}) => {
   }
 
   if (!user) {
-    Swal.fire("Please login to view this page");
+    Swal.fire({
+      title: "Please login to view this page",
+      confirmButtonColor: "#0D9488",
+    });
     return (
       <Navigate
         to="/login"

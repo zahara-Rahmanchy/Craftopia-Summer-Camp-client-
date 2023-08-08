@@ -9,6 +9,8 @@ const slider = (
     play={true}
     cancelOnInteraction={false} // should stop playing on user interaction
     interval={3000}
+    animation="fade"
+    transitionDelay={1000}
   >
     <div
       className="hero h-full z-10"
@@ -19,12 +21,13 @@ const slider = (
         backgroundPosition: "center",
       }}
     >
-      <div className=" bg-black bg-opacity-30 hero-overlay"></div>
-      <div className="hero-content text-center text-neutral-content ">
+      <div className="absolute inset-0  bg-black opacity-50"></div>
+
+      <div className=" md:hero-content text-center text-neutral-content w-full h-fit">
         <Slide>
           {" "}
-          <div className=" md:max-w-3xl w-full bg-blue-700  bg-opacity-40 hero-overlay">
-            <h1 className="mb-5 md:text-8xl text-5xl font-extrabold italic text-lime-300 border-0 ">
+          <div className=" h-full w-full bg-teal-700  bg-opacity-80 hero-overlay p-3">
+            <h1 className="mb-5 md:text-8xl text-5xl font-extrabold italic text-lime-400 border-0 ">
               Summer Camp!
             </h1>
             <p className="text-orange-400 md:text-3xl font-semibold text-lg ">
@@ -53,11 +56,11 @@ const slider = (
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-blue-900 bg-opacity-30 hero-overlay"></div>
+      {/* <div className="bg-teal-900 bg-opacity-60 hero-overlay"></div> */}
       <div className="hero-content text-center text-neutral-content ">
         <div className="max-w-md">
           <Slide>
-            <h1 className="mb-5 md:text-6xl font-bold  text-lime-300 text-2xl">
+            <h1 className="mb-5 md:text-6xl font-bold  text-lime-300 text-2xl bg-teal-800 p-3 bg-opacity-25">
               Let Your Creativity Shine
             </h1>
           </Slide>
@@ -73,12 +76,12 @@ const slider = (
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-blue-900 bg-opacity-30 hero-overlay"></div>
-      <div className="hero-content text-center text-neutral-content ">
-        <div className="max-w-xl">
+      {/* <div className="bg-blue-900 bg-opacity-30 hero-overlay"></div> */}
+      <div className=" text-center text-neutral-content ">
+        <div className="max-w-md">
           <Slide>
             {" "}
-            <h1 className="mb-5 md:text-6xl font-bold text-lime-400  text-2xl">
+            <h1 className="mb-5 md:text-6xl font-bold text-lime-400  text-2xl bg-teal-800 p-3 bg-opacity-80 w-full">
               Make Art, Make Friends, Make Memories
             </h1>
           </Slide>

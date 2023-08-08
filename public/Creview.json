@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Emma",
+    "age": 12,
+    "testimonial": "I had the best summer ever at this camp! I learned to create beautiful crafts, and the counselors were so patient and helpful. Can't wait to come back next year!",
+    "picture": "https://media.istockphoto.com/id/1178857901/photo/street-portrait-of-smiling-senior-man.jpg?s=612x612&w=0&k=20&c=rnG4kQc864qhbQqNU06yPHnWaZiIOjyj_OgG28ZEAgM="
+  },
+  {
+    "name": "Liam",
+    "age": 10,
+    "testimonial": "This camp made my summer unforgettable. I made new friends and discovered my love for painting. I proudly displayed my artwork at home, and my family loved it!",
+    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJlYXV0aWZ1bCUyMHdvbWFufGVufDB8fDB8fHww&w=1000&q=80"
+  }
+]

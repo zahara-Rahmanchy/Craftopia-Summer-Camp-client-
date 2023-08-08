@@ -1,43 +1,41 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Rotate, Slide, Zoom} from "react-awesome-reveal";
 import {FaCircle} from "react-icons/fa";
+import {ThemeContext} from "../../Provider/ThemeProvider";
 
 const FacilitiesSchedule = () => {
+  const {theme} = useContext(ThemeContext);
+  const textColorClass =
+    theme === "light"
+      ? "text-teal-600 bg-green-50"
+      : "text-teal-400  bg-teal-950";
   return (
     <div className="p-10 ">
       <div
         className={`max-w-7xl mx-auto py-10 
-          bg-green-100""
+        bg-green-50"
         }`}
       >
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-2 bg-green-50">
           <div className="m-3">
             <Slide>
               {" "}
-              <p
-                className={`text-xl font-semibold italic   text-teal-600 "
-                  `}
-              >
+              <p className={`text-xl font-semibold  italic ${textColorClass}`}>
                 Craftopia Summer Camp offers a wide range of facilities and an
                 exciting schedule to create an unforgettable experience for
                 campers.
               </p>
             </Slide>
-            <Rotate>
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1614113036347-9f60df80730a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1197&q=80"
-                className="rounded-s-full w-4/5 mt-6"
-              ></img>
-            </Rotate>
+            {/* <Rotate> */}{" "}
+            <img
+              src="https://images.unsplash.com/photo-1614113036347-9f60df80730a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1197&q=80"
+              className="rounded-s-full w-4/5 mt-6"
+            ></img>
+            {/* </Rotate> */}
           </div>
           <div className="p-2">
             <Slide>
-              <p
-                className={`text-md font-semibold  italic text-teal-600 "
-                    
-                }`}
-              >
+              <p className={`text-xl font-semibold  italic ${textColorClass}`}>
                 Here's a glimpse of our dynamic and educational daily schedule
                 filled with engaging activities.
               </p>
@@ -45,7 +43,9 @@ const FacilitiesSchedule = () => {
             <p className="text-lg font-semibold text-orange-400 italic mt-3">
               Morning:
             </p>
-            <ol className="text-md font-semibold italic my-3 ms-4 text-teal-600">
+            <ol
+              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
+            >
               <Zoom>
                 <li className="flex flex-row items-center">
                   <FaCircle className=" me-2 text-xs" />
@@ -71,8 +71,7 @@ const FacilitiesSchedule = () => {
               Afternoon:
             </p>
             <ol
-              className="text-md font-semibold  italic my-3 ms-4
-               text-teal-600 "
+              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
             >
               <Zoom>
                 <li className="flex flex-row items-center">
@@ -99,9 +98,7 @@ const FacilitiesSchedule = () => {
               Evening:{" "}
             </p>
             <ol
-              className="text-md font-semibold  italic my-3 ms-4
-               
-                   text-teal-600 "
+              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
             >
               <Zoom>
                 <li className="flex flex-row items-center">

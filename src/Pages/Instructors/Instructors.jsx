@@ -1,9 +1,15 @@
 import {useQuery} from "@tanstack/react-query";
-import React from "react";
+import React, {useContext} from "react";
 import useAxios from "../../Hooks/useAxios";
 import {Helmet} from "react-helmet-async";
+import {ThemeContext} from "../../Provider/ThemeProvider";
 
 const Instructors = () => {
+  const {theme} = useContext(ThemeContext);
+  const textColorClass =
+    theme === "light"
+      ? "bg-green-200 text-teal-700 "
+      : "text-green-300  bg-teal-800";
   const [axiosSecure] = useAxios();
   const {data: instructors = [], refetch} = useQuery(
     ["instructors"],
@@ -14,12 +20,14 @@ const Instructors = () => {
     }
   );
   return (
-    <div className="bg-green-200 ">
+    <div className={`${textColorClass}`}>
       <Helmet>
         <title>Craftopia | Instructors</title>
       </Helmet>
-      <div className="mx-6 py-3">
-        <h2 className="text-4xl font-semibold my-10 text-center text-teal-700 italic">
+      <div className={`mx-6 py-3 `}>
+        <h2
+          className={`text-4xl font-semibold my-10 text-center italic ${textColorClass}`}
+        >
           {" "}
           Meet Our Amazing Instructors!
         </h2>
@@ -45,7 +53,7 @@ const Instructors = () => {
                   <span className="mt-1 text-lg  text-green-500 font-semibold me-2">
                     Email:
                   </span>
-                  {ins.email}
+                  <span className="text-teal-700"> {ins.email}</span>
                 </p>
               </div>
             </div>

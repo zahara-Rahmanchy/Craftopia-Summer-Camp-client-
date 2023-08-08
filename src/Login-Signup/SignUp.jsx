@@ -113,10 +113,10 @@ export const SignUp = () => {
         {" "}
         <title> Craftopia | Sign Up </title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-green-50">
         <div className="hero-content flex-col lg:flex-row-reverse w-1/2 ">
-          <div className=" shadow-2xl bg-base-100 w-full">
-            <h2 className="text-2xl mt-2 font-bold text-center text-green-500">
+          <div className=" shadow-2xl bg-base-100 w-4/5 rounded-md my-20">
+            <h2 className="text-2xl mt-2 font-bold text-center text-teal-600">
               Sign Up!
             </h2>
             <form
@@ -253,7 +253,7 @@ export const SignUp = () => {
                 </p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-green-400" type="submit">
+                <button className="btn bg-teal-700  text-white" type="submit">
                   Sign Up
                 </button>
               </div>
