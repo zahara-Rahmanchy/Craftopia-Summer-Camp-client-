@@ -13,14 +13,16 @@ const FacilitiesSchedule = () => {
     <div className="p-10 ">
       <div
         className={`max-w-7xl mx-auto py-10 
-        bg-green-50"
+        bg-slate-800"
         }`}
       >
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-2 bg-green-50">
-          <div className="m-3">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-2 bg-slate-800 text-teal-400  border-4">
+          <div className="m-3 p-5">
             <Slide>
               {" "}
-              <p className={`text-xl font-semibold  italic ${textColorClass}`}>
+              <p
+                className={`text-xl font-semibold  italic bg-slate-800 text-orange-100 p-5`}
+              >
                 Craftopia Summer Camp offers a wide range of facilities and an
                 exciting schedule to create an unforgettable experience for
                 campers.
@@ -33,18 +35,19 @@ const FacilitiesSchedule = () => {
             ></img>
             {/* </Rotate> */}
           </div>
-          <div className="p-2">
+          <div className="p-10">
             <Slide>
-              <p className={`text-xl font-semibold  italic ${textColorClass}`}>
-                Here's a glimpse of our dynamic and educational daily schedule
-                filled with engaging activities.
+              <p
+                className={`text-xl font-semibold text-center  italic bg-slate-800 text-orange-300`}
+              >
+                Our engaging daily schedule at a glance.
               </p>
             </Slide>
             <p className="text-lg font-semibold text-orange-400 italic mt-3">
               Morning:
             </p>
             <ol
-              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
+              className={`text-md font-semibold italic my-3 ms-4 bg-slate-800 text-teal-400`}
             >
               <Zoom>
                 <li className="flex flex-row items-center">
@@ -71,7 +74,7 @@ const FacilitiesSchedule = () => {
               Afternoon:
             </p>
             <ol
-              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
+              className={`text-md font-semibold italic my-3 ms-4 bg-slate-800 text-teal-400`}
             >
               <Zoom>
                 <li className="flex flex-row items-center">
@@ -98,7 +101,7 @@ const FacilitiesSchedule = () => {
               Evening:{" "}
             </p>
             <ol
-              className={`text-md font-semibold italic my-3 ms-4 ${textColorClass}`}
+              className={`text-md font-semibold italic my-3 ms-4 bg-slate-800 text-teal-400`}
             >
               <Zoom>
                 <li className="flex flex-row items-center">

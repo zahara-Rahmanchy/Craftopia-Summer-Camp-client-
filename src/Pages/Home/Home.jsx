@@ -6,16 +6,18 @@ import {Fade} from "react-awesome-reveal";
 import FacilitiesSchedule from "./FacilitiesSchedule";
 import {Helmet} from "react-helmet-async";
 import {ThemeContext} from "../../Provider/ThemeProvider";
-import HomSlider from "./Slider";
-import Slider from "./Slider";
 import HomeSlider from "./HomeSlider";
 import Reviews from "./Reviews";
+import TotalBanner from "./TotalBanner";
+import CampingTypes from "./CampingTypes";
+import About from "./About";
 
+// bg-[#F5F5F5]
 const Home = () => {
   const {theme} = useContext(ThemeContext);
   const textColorClass =
     theme === "light"
-      ? "text-teal-700 bg-[#FAFAFB]"
+      ? "text-teal-700  bg-black"
       : "text-green-300 bg-teal-950";
   return (
     <>
@@ -26,9 +28,13 @@ const Home = () => {
         <div>
           {/* <Slider /> */}
           <HomeSlider />
+          <About />
+          <TotalBanner />
+          <CampingTypes />
           <PopularClass col={textColorClass} />
-          <PopularInstructor />
           <FacilitiesSchedule></FacilitiesSchedule>
+          <PopularInstructor />
+
           <Reviews />
         </div>
       </Fade>

@@ -1,7 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import useAxios from "../hooks/useAxios";
-import {Roll, Rotate} from "react-awesome-reveal";
+import {Fade, Roll, Rotate, Slide} from "react-awesome-reveal";
 import {ThemeContext} from "../Provider/ThemeProvider";
 
 const PopularInstructor = () => {
@@ -19,35 +19,41 @@ const PopularInstructor = () => {
     }
   );
   const limitedInstructors = instructors.slice(0, 6);
+
   return (
-    <div className="p-5 ">
+    <div className=" ">
       <h2
-        className={`text-center text-5xl py-9 font-semibold italic pt-5 ${textColorClass}`}
+        className="text-5xl font-semibold mb-2 text-center mt-20 text-teal-700"
+        style={{
+          fontFamily: "'Bricolage Grotesque', sans-serif",
+          fontVariationSettings: "'opsz' 14, 'wght' 400",
+        }}
       >
-        Our Instructors
-        {/* <Rotate> Our Instructors</Rotate> */}
+        Most Loved Instuctors!
       </h2>
+      <hr class="border-t-4 border-orange-300 w-1/4 mx-auto" />
+      <h3 className="text-center text-slate-700 text-3xl my-2"></h3>
       <div className=" py-3 max-w-6xl mx-auto">
         <div
           className={`grid md:grid-cols-3 grid-cols-1 gap-3 p-4 rounded-lg `}
         >
           {limitedInstructors.map((ins, index) => (
-            // <Roll cascade damping={0.1}>
-            <figure
-              key={ins._id}
-              className="card shadow-lg p-4 m-4 border-b-8 border-r-4 border-teal-600 bg-blue-50"
-            >
-              <img
-                src={ins.image}
-                alt="Album"
-                className="my-1 rounded-2xl border-4 border-stone-300"
-              />
-              <h2 className="text-orange-400 font-bold p-2 text-xl">
-                {" "}
-                {ins.name}
-              </h2>
-            </figure>
-            // </Roll>
+            <Slide direction="down" duration={1000}>
+              <figure
+                key={ins._id}
+                className="card shadow-lg p-4 m-4 border-b-8 border-r-4 border-teal-600 bg-slate-900"
+              >
+                <img
+                  src={ins.image}
+                  alt="Album"
+                  className="my-1 rounded-2xl border-4 border-stone-300"
+                />
+                <h2 className="text-orange-300 font-bold p-2 text-xl">
+                  {" "}
+                  {ins.name}
+                </h2>
+              </figure>
+            </Slide>
           ))}
         </div>
       </div>

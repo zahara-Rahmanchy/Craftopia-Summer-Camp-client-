@@ -14,7 +14,7 @@ const Classes = () => {
   const {theme} = useContext(ThemeContext);
   const textColorClass =
     theme === "light"
-      ? "bg-green-50 text-teal-700 "
+      ? "bg-slate-700 text-teal-700 "
       : "text-green-300  bg-teal-800";
   const {user} = useContext(AuthContext);
   const [axiosSecure] = useAxios();
@@ -64,7 +64,7 @@ const Classes = () => {
       <div className={`mx-6 py-3 `}>
         <ClassesBanner />
         <h2
-          className={`text-4xl font-semibold text-center my-20  italic ${textColorClass}`}
+          className={`text-4xl font-semibold text-center my-20  italic text-teal-400`}
         >
           {" "}
           Explore our Amazing and Fun Classes!
@@ -75,7 +75,7 @@ const Classes = () => {
           {classes.map((clas, index) => (
             <div
               className={`card w-4/5 lg:card shadow-2xl p-2 border-r-4 border-b-8 border-b-teal-600 border-r-teal-600 ${
-                clas.availableSeat === 0 ? "bg-red-400" : "bg-orange-50 "
+                clas.availableSeat === 0 ? "bg-red-400" : "bg-orange-100 "
               }`}
               key={clas._id}
             >

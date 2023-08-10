@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>
-            <div className="bg-[#FAFAFB]">
+            <div className="bg-[#fafafbf5]">
               <RouterProvider router={router} />
             </div>
           </ThemeProvider>

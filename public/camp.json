@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Woodland Retreat",
+    "description": "Campers stay in cozy cabins nestled within the woods. They can create art surrounded by the beauty of nature and forest trails.",
+    "image": "https://images.unsplash.com/photo-1519378045141-f05b62faa055?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+
+  {
+    "name": "Mountain Adventure",
+    "description": "High up in the mountains, campers experience art and craft activities in an alpine setting. The breathtaking views enhance their creativity.",
+    "image": "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+
+  {
+    "name": "Rustic Farm Experience",
+    "description": "Immerse in farm life while exploring arts and crafts. Campers interact with animals and create art using natural farm materials.",
+    "image": "https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
+  },
+  {
+    "name": "Lakeside Oasis",
+    "description": "Set by the serene lake, this campsite offers art sessions with a waterfront view. Kids can enjoy crafting while feeling the gentle breeze.",
+    "image": "https://images.unsplash.com/photo-1526491109672-74740652b963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+  {
+    "name": "Woodland Retreat",
+    "description": "Campers stay in cozy cabins nestled within the woods. They can create art surrounded by the beauty of nature and forest trails.",
+    "image": "https://images.unsplash.com/photo-1519378045141-f05b62faa055?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+
+  {
+    "name": "Mountain Adventure",
+    "description": "High up in the mountains, campers experience art and craft activities in an alpine setting. The breathtaking views enhance their creativity.",
+    "image": "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+  },
+
+  {
+    "name": "Rustic Farm Experience",
+    "description": "Immerse in farm life while exploring arts and crafts. Campers interact with animals and create art using natural farm materials.",
+    "image": "https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
+  }
+]

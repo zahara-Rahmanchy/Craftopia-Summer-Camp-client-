@@ -54,11 +54,12 @@ const Navbar = () => {
     };
   }, []);
 
+  // bg-gradient-to-r from-[#1d2939] to-[#64d9b9] text-teal-100
   return (
     <div
       className={`navbar  mt-0  fixed top-0 z-20  ${
         scrolled
-          ? "bg-gradient-to-r from-[#1d2939] to-[#64d9b9] text-teal-100"
+          ? "border-stone-200 border-b-2 bg-slate-900 opacity-80 text-orange-100"
           : `${textColorClass} bg-transparent`
       } `}
     >
@@ -82,7 +83,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="text-lg menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52 text-md  bg-teal-600 text-white z-50 bg-opacity-80"
+            className="text-lg menu menu-sm dropdown-content mt-0 p-2 shadow rounded-box w-52 text-md  bg-slate-600 text-white z-50 bg-opacity-80"
           >
             <li className="text-lg">
               <Link to="/">Home</Link>
@@ -119,7 +120,7 @@ const Navbar = () => {
           </label> */}
           <p
             className={`text-3xl italic font-bold md:ml-20  ${
-              scrolled ? " text-teal-200" : `text-teal-200`
+              scrolled ? " text-orange-300" : `text-orange-300`
             }`}
           >
             Craftopia
@@ -170,7 +171,7 @@ const Navbar = () => {
             checked={theme === "light" ? false : true}
           />
 
-          <svg
+          {/* <svg
             className="swap-on fill-current w-10 h-10"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -184,7 +185,7 @@ const Navbar = () => {
             viewBox="0 0 24 24"
           >
             <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
-          </svg>
+          </svg> */}
         </label>
         {user ? (
           <>
@@ -200,7 +201,7 @@ const Navbar = () => {
         ) : (
           <Link
             to="/login"
-            className="btn bg-[#24344a] text-white text-lg border-0"
+            className="btn bg-orange-300 hover:bg-teal-700 text-white text-lg border-0"
           >
             Login
           </Link>

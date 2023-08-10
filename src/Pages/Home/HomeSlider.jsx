@@ -23,14 +23,14 @@ const HomeSlider = () => {
   return (
     <div className="w-full m-0 px-0 overflow-hidden bg-blue h-full  ">
       <Slider {...settings}>
-        <div className="lg:h-[600px]">
+        <div className="h-[600px]">
           {/* <img
             src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
             className="object-cover w-full h-[600px]"
           />
           */}
           <div
-            className="hero z-10 lg:h-[600px]"
+            className="hero z-10 h-[600px]"
             style={{
               backgroundImage: `url("https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80")`,
               backgroundRepeat: "no-repeat",
@@ -67,14 +67,16 @@ const HomeSlider = () => {
           </div>
         </div>
 
-        <div className="lg:h-[600px] h-[300px]">
+        {/* backgroundImage: `url("https://i.ibb.co/YZkyXgc/pexels-photo-6966372.jpg")`, */}
+        {/* */}
+        <div className="lg:h-[600px]">
           {/* <img
-            src="https://i.ibb.co/YZkyXgc/pexels-photo-6966372.jpg"
+            src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
             className="object-cover w-full h-[600px]"
-          /> */}
-
+          />
+          */}
           <div
-            className="hero z-10 lg:h-[600px]  h-full"
+            className="hero z-10 h-[600px]"
             style={{
               backgroundImage: `url("https://i.ibb.co/YZkyXgc/pexels-photo-6966372.jpg")`,
               backgroundRepeat: "no-repeat",
@@ -83,8 +85,10 @@ const HomeSlider = () => {
             }}
           >
             <div className="absolute inset-0  bg-black opacity-50"></div>
-            <div className=" text-center text-neutral-content ">
-              <div className=" h-1/3 w-full  bg-opacity-80  p-3 ">
+
+            <div className=" md:hero-content text-center text-neutral-content w-full h-fit">
+              {/* <Slide> */}{" "}
+              <div className=" h-full w-full  bg-opacity-80  p-3">
                 <Slide direction="left" duration={3000}>
                   {" "}
                   <h1 className="mb-5 md:text-7xl text-3xl md:w-3/4 mx-auto  mt-20 font-bold italic text-lime-300 border-0 ">
@@ -92,12 +96,13 @@ const HomeSlider = () => {
                   </h1>
                 </Slide>
               </div>
+              {/* </Slide> */}
             </div>
           </div>
         </div>
-        <div className="lg:h-[600px] h-[300px]">
+        <div className="h-[600px]">
           <div
-            className="hero z-10 lg:h-[600px] h-full"
+            className="hero z-10 h-[600px]"
             style={{
               backgroundImage: `url("https://images.unsplash.com/photo-1605627079912-97c3810a11a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=807&q=80")`,
               backgroundRepeat: "no-repeat",

@@ -20,23 +20,23 @@ const Instructors = () => {
     }
   );
   return (
-    <div className={`${textColorClass}`}>
+    <div className={`bg-slate-700 pt-20`}>
       <Helmet>
         <title>Craftopia | Instructors</title>
       </Helmet>
       <div className={`mx-6 py-3 `}>
         <h2
-          className={`text-4xl font-semibold my-10 text-center italic ${textColorClass}`}
+          className={`text-4xl font-semibold my-10 text-center italic text-teal-400`}
         >
           {" "}
           Meet Our Amazing Instructors!
         </h2>
         <div
-          className={`grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 m-3 `}
+          className={`grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-8 m-3 `}
         >
           {instructors.map((ins, index) => (
             <div
-              className={`card  lg:card-normal shadow-xl p-2 bg-orange-100 `}
+              className={`card  lg:card-normal shadow-xl p-2 bg-orange-100 m-4`}
               key={ins._id}
             >
               <figure>

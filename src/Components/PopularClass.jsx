@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import useAxios from "../hooks/useAxios";
 import {useQuery} from "@tanstack/react-query";
-import {Bounce, Fade, Rotate} from "react-awesome-reveal";
+import {Bounce, Fade, Rotate, Slide} from "react-awesome-reveal";
 import {useState} from "react";
 import {ThemeContext} from "../Provider/ThemeProvider";
 
@@ -20,33 +20,54 @@ const PopularClass = () => {
   });
 
   return (
-    <div className={` p-10 mt-5`}>
+    <div className={` my-28 max-w-7xl rounded-md mx-auto`}>
       <h2
-        className={` text-left  mx-auto text-5xl py-9 pl-5 mb-5 border-l-orange-300 rounded-md  font-semibold italic pt-8 border-l-8 w-4/5
-    `}
+        className="text-5xl font-semibold mb-2 text-center   mt-28 text-teal-700"
+        style={{
+          fontFamily: "'Bricolage Grotesque', sans-serif",
+          fontVariationSettings: "'opsz' 14, 'wght' 400",
+        }}
       >
-        <Bounce>Our Popular Classes </Bounce>
+        Favourite Courses
       </h2>
-      <div className="py-3 max-w-6xl mx-auto bg-green-50">
+      <hr class="border-t-4 border-orange-300 w-1/6 mx-auto" />
+      <h3 className="text-center text-slate-700 text-3xl mt-2 mb-10">
+        Take a glance!
+      </h3>
+      <div
+        className=" w-full
+        h-full object-cover rounded-md  "
+        style={{
+          background: `linear-gradient(90deg, rgba(27,30,46,1) 0%, rgba(116,53,13,0.9557072829131653) 100%);`,
+          height: "100%",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
         <div
-          className={` grid md:grid-cols-3 grid-cols-1 gap-3 p-4 rounded-lg `}
+          className={` grid md:grid-cols-3 grid-cols-1 gap-3 p-4 rounded-lg`}
         >
           {classes.map((clas, index) => (
-            // <Rotate cascade damping={0.1}>
-
-            <div className="card  p-10 text-center ">
-              <h2 className="card-title text-orange-400 text-center">
-                {clas.className}
-              </h2>
-              <figure key={clas._id} className="shadow-2xl p-4 bg-[#EEFBF3]">
-                <img
-                  src={clas.image}
-                  alt="Album"
-                  className="my-1 rounded-full "
-                />
-              </figure>
-            </div>
-            // </Rotate>
+            <Slide direction="down">
+              <div>
+                {" "}
+                <figure
+                  key={clas._id}
+                  className="card shadow-lg p-4 m-4 border-b-8 border-r-4 border--900  bg-slate-950"
+                >
+                  <img
+                    src={clas.image}
+                    alt="Album"
+                    className="my-1 rounded-s-full shadow-md shadow-teal-900 p-5"
+                  />
+                  <h2 className="text-orange-300 font-bold p-5 text-center text-xl">
+                    {" "}
+                    {clas.className}
+                  </h2>
+                </figure>
+              </div>
+            </Slide>
           ))}
         </div>
       </div>

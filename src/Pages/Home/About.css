@@ -1,0 +1,10 @@
+/* About.css */
+
+.custom-list li::before {
+  content: "•"; /* Use a bullet character or other suitable symbol */
+  color: #fdba74; /* Set the color you want */
+  font-size: 2em;
+  margin-right: 0.5rem;
+
+  align-self: center;
+}
